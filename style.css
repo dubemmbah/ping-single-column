@@ -71,6 +71,12 @@ main {
   gap: 1.75rem;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+.input__wrapper .input-container {
+  max-width: 42.5rem;
+  width: 100%;
 }
 
 .input__wrapper input {
@@ -82,6 +88,29 @@ main {
   border: 1px solid var(--pale-blue);
   font-size: 2rem;
   color: hsl(209, 33%, 12%);
+}
+
+.input-container .error-msg {
+  font-size: 1.3rem;
+  text-align: left;
+  margin-top: 0.5rem;
+  margin-left: 2.75rem;
+  font-style: italic;
+  color: hsl(354, 100%, 66%, 0.8);
+  display: none;
+  position: absolute;
+}
+
+.input__wrapper input.error {
+  border: 1px solid var(--light-red);
+}
+
+.input__wrapper input.error::placeholder {
+  color: transparent;
+}
+
+.input__wrapper input.error-input::placeholder {
+  color: hsl(209, 33%, 12%, 0.8);
 }
 
 .input__wrapper input:focus,
@@ -110,8 +139,54 @@ main {
   box-shadow: 0 0.75rem 1rem var(--pale-blue);
 }
 
+.input__wrapper button:focus,
+.input__wrapper button:active {
+  outline: none;
+}
+
 .input__wrapper button:hover {
   background-color: hsl(228, 87%, 60%);
+}
+
+.popup {
+  max-width: 30rem;
+  width: 100%;
+  background-image: linear-gradient(
+    to bottom right,
+    hsl(223, 100%, 84%) 0% 15%,
+    hsl(223, 100%, 78%),
+    hsl(223, 100%, 67%)
+  );
+  height: 15rem;
+  color: hsl(0, 0%, 100%);
+  padding: 3rem;
+  text-align: center;
+  line-height: 1.5;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  position: fixed;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.popup.show {
+  animation: showPopUp 5s ease 0.25s backwards;
+}
+
+@keyframes showPopUp {
+  0% {
+    top: -50%;
+  }
+  25% {
+    top: -1.25%;
+  }
+  85% {
+    top: -1.25%;
+  }
+  100% {
+    top: -50%;
+  }
 }
 
 .illustration img {
@@ -145,6 +220,9 @@ main {
 }
 
 @media (max-width: 46.875em) {
+  body {
+    padding: 7.5rem 3.75rem;
+  }
   .heading {
     font-size: 3.6rem;
   }
@@ -157,7 +235,33 @@ main {
     /* max-width: 50rem; */
   }
 
+  .input__wrapper .error-msg {
+    position: static;
+  }
+
   .input__wrapper button {
     max-width: 42.5rem;
   }
+
+  .illustration {
+    margin-bottom: 12rem;
+  }
+}
+
+@media (max-width: 34.375em) {
+  .heading {
+    font-size: 2.8rem;
+  }
+
+  .input__wrapper button,
+  .input__wrapper input,
+  .input__wrapper .input-container {
+    max-width: 35rem;
+  }
+
+  .error-msg {
+  }
+}
+
+@media (max-width: 23.475em) {
 }

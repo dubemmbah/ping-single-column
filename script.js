@@ -21,7 +21,6 @@ const validateEmail = function (email) {
     domainExtension[domainExtension.length - 1].length < 2
   )
     return false;
-  console.log(typeof email);
 
   return true;
 };
@@ -31,14 +30,28 @@ function displayError() {
   emailInput.classList.add("error");
 }
 
+emailInput.addEventListener("input", () => {
+  if (!validateEmail(emailInput.value)) {
+    displayError();
+  } else {
+    errorMsg.style.display = "none";
+    emailInput.classList.remove("error");
+
+    emailInput.classList.remove("error-input");
+  }
+});
+
 form.addEventListener("submit", (e) => {
   e.preventDefault(); // prevents the default behavior whereby the form reloads the page on submission
+
+  console.log("Form submitted");
 
   if (!validateEmail(emailInput.value)) {
     displayError();
 
     emailInput.classList.add("error-input");
     emailInput.placeholder = "email@example/com";
+    emailInput.value = "";
   }
 
   if (validateEmail(emailInput.value)) {
@@ -54,12 +67,13 @@ form.addEventListener("submit", (e) => {
     // Remove focus
     emailInput.blur();
 
-    // Display thank you message
+    // Remove .show class from thankyou message
     popup.classList.remove("show");
 
     // Trigger reflow i.e., force browser to recalculate position and place in initial position
     void popup.offsetWidth;
 
+    // Add .show class
     popup.classList.add("show");
   }
 });

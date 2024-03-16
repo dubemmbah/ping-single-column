@@ -39,7 +39,6 @@ body {
 main {
   width: 100%;
   text-align: center;
-  /* padding: 2rem 4rem; */
 }
 
 .logo {
@@ -82,7 +81,6 @@ main {
 .input__wrapper input {
   max-width: 42.5rem;
   width: 100%;
-  /* flex: 0 1 37.5rem; */
   padding: 1.75rem 3rem;
   border-radius: 100rem;
   border: 1px solid var(--pale-blue);
@@ -209,9 +207,15 @@ main {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
-  outline: 1px solid hsl(223, 100%, 92%);
+  outline: 1px solid hsl(223, 100%, 87%);
   outline-offset: 0.75rem;
   cursor: pointer;
+  transition: 0.4s ease;
+}
+
+.icon:hover {
+  transform: translateY(0.2rem);
+  outline: 1px solid hsl(223, 100%, 90%);
 }
 
 .copyright {
@@ -223,16 +227,13 @@ main {
   body {
     padding: 7.5rem 3.75rem;
   }
+
   .heading {
     font-size: 3.6rem;
   }
   .input__wrapper {
     flex-flow: column;
     margin-bottom: 8rem;
-  }
-
-  .input__wrapper input {
-    /* max-width: 50rem; */
   }
 
   .input__wrapper .error-msg {
@@ -253,13 +254,14 @@ main {
     font-size: 2.8rem;
   }
 
+  .info {
+    font-size: 1.75rem;
+  }
+
   .input__wrapper button,
   .input__wrapper input,
   .input__wrapper .input-container {
     max-width: 35rem;
-  }
-
-  .error-msg {
   }
 }
 
